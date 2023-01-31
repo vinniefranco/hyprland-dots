@@ -19,6 +19,13 @@
       "on-scroll-up": "playerctl next",
       "on-scroll-down": "playerctl previous"
     },
+    "custom/cava": {
+      "exec": "~/.config/hypr/scripts/cava-widget 2> /dev/null",
+      "exec-if": "pgrep cava",
+      "format": "{icon} {}",
+      "return-type": "text",
+      "max-length": 40,
+    },
   // Hypractive
     "custom/hypractive": {
       "exec": "~/.config/hypr/scripts/hypractive 2> /dev/null",
