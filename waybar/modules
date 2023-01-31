@@ -1,0 +1,164 @@
+// Waybar modules configuration
+{
+  // Weather
+    "custom/weather" : {
+      "tooltip" : true,
+      "format" : "{}",
+      "restart-interval" : 300,
+      "exec" : "~/.config/hypr/scripts/weather.py",
+      "return-type" : "json"
+    },
+  // Spotify
+    "custom/spotify": {
+      "exec": "~/.config/hypr/scripts/mediaplayer 2> /dev/null",
+      "exec-if": "pgrep spotify",
+      "format": "{icon} {}",
+      "return-type": "json",
+      "max-length": 40,
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous"
+    },
+  // Hypractive
+    "custom/hypractive": {
+      "exec": "~/.config/hypr/scripts/hypractive 2> /dev/null",
+      "exec-if": "pgrep hypractive",
+      "format": "{}",
+      "return-type": "json",
+      "max-length": 64,
+    },
+	// waybar-backlight
+    "backlight": {
+		"interval": 2,
+        //"device": "amdgpu_bl0",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", ""],
+		// Commands to execute on events
+        "on-scroll-up": "light -A 5%",
+        "on-scroll-down": "light -U 5%",
+        "smooth-scrolling-threshold": 1,
+    },
+
+	// waybar-battery
+    "battery": {
+		"interval": 60,
+		//"bat": "BAT1",
+		//"adapter": "ACAD",
+		"full-at": 100,
+		"design-capacity": false,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {}%",
+        "format-charging": "",
+        "format-plugged": "ﮣ",
+        "format-full": "",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-time": "{H}h {M}min",
+        "tooltip": true,
+    },
+	// waybar-clock
+      "clock": {
+        "format": "{: %R   %d/%m}",
+        "timezone": "America/Chicago",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+	// waybar-cpu
+           
+	// waybar-custom
+    "custom/menu": {
+         "format": "",
+         "tooltip": false,
+         "on-click": "$HOME/.config/hypr/scripts/menu",
+    },
+
+    "custom/power": {
+         "format": "襤",
+         "tooltip": false,
+         "on-click": "$HOME/.config/hypr/scripts/wlogout",
+    },
+
+	// waybar-disk
+	
+
+	// waybar-network
+    "network": {
+		"interval": 5,
+        //"interface": "wlan*", // (Optional) To force the use of this interface, set it for netspeed to work
+        "format-wifi": "直 {essid}",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "睊",
+        "format-disabled": "睊",
+        "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "on-click": "[[ ! `pidof nm-connection-editor` ]] && nm-connection-editor || pkill nm-connection-e",
+    },
+
+  // package updates
+    "custom/updates": {
+      "exec": "(paru -Qua) | wc -l",
+      "interval": 7200,
+      "format": " {}"
+    },
+
+	// waybar-pulseaudio
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-bluetooth": " {volume}%",
+        "format-bluetooth-muted": "",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "ﳌ",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5.0,
+		// Commands to execute on events
+        "on-click": "amixer set Master toggle",
+        "on-click-right": "pavucontrol",
+        "smooth-scrolling-threshold": 1,
+    },
+
+	// waybar-tray
+    "tray": {
+        "icon-size": 13,
+        "spacing": 10
+    },
+
+  // waybar-wlr-workspaces
+    "wlr/workspaces": {
+         "disable-scroll": false,
+         "disable-click": false,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "6": "漣",
+             "7": "",
+             "8": "",
+             "9": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         },
+        "smooth-scrolling-threshold": 1,
+        "disable-scroll-wraparound": false,
+        "enable-bar-scroll": false,
+        "disable-markup": false,
+        "current-only": false,
+    }
+}

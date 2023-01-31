@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+CONFIG="$HOME/.config/hypr/wezterm/wezterm.lua"
+wezterm --config-file "$CONFIG"
