@@ -4,6 +4,8 @@ import json
 import requests
 from datetime import datetime
 
+"https://api.open-meteo.com/v1/forecast?latitude=43.16&longitude=-88.12&hourly=temperature_2m,apparent_temperature,weathercode&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago"
+
 WEATHER_CODES = {
     '113': '🌈',
     '116': '⛅️',
